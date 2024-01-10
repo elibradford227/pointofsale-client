@@ -13,7 +13,7 @@ export default function OrderCard({ orderObj }) {
         <p>Customer Phone Number: {orderObj.customer_phone}</p>
         <p>Customer Email: {orderObj.customer_email}</p>
         <p>Order Type: {orderObj.type}</p>
-        <Link href={`/pages/${orderObj.id}`} passHref>
+        <Link href={`/orders/${orderObj.id}`} passHref>
           <Button variant="primary" className="viewBtn">View</Button>
         </Link>
       </Card.Body>
