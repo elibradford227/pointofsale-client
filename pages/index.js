@@ -1,11 +1,9 @@
-// import { Button } from 'react-bootstrap'; // TODO: COMMENT IN FOR AUTH
+import { Button } from 'react-bootstrap';
+import Link from 'next/link';
 // import { signOut } from '../utils/auth'; // TODO: COMMENT IN FOR AUTH
 // import { useAuth } from '../utils/context/authContext'; // TODO: COMMENT IN FOR AUTH
 
 function Home() {
-  // const { user } = useAuth(); // TODO: COMMENT IN FOR AUTH
-
-  const user = { displayName: 'Dr. T' }; // TODO: COMMENT OUT FOR AUTH
   return (
     <div
       className="text-center d-flex flex-column justify-content-center align-content-center"
@@ -16,7 +14,19 @@ function Home() {
         margin: '0 auto',
       }}
     >
-      <h1>Hello {user.displayName}! </h1>
+      {/* <h1>Welcome {user.displayName}! </h1> */}
+      <Link passHref href="/orders">
+        <Button variant="secondary">View Orders</Button>
+      </Link>
+      <Link passHref href="/menu">
+        <Button variant="secondary">Menu Items</Button>
+      </Link>
+      <Link passHref href="/orders/new">
+        <Button variant="secondary">Create Order</Button>
+      </Link>
+      <Link passHref href="/revenue">
+        <Button variant="secondary">View Revenue</Button>
+      </Link>
     </div>
   );
 }

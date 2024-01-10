@@ -20,6 +20,9 @@ export default function NavBarAuth() {
             <Link passHref href="/">
               <Nav.Link>Home</Nav.Link>
             </Link>
+            <Link passHref href="/orders">
+              <Nav.Link>View Orders</Nav.Link>
+            </Link>
             <Button variant="danger" onClick={signOut}>Sign Out</Button>
           </Nav>
         </Navbar.Collapse>
