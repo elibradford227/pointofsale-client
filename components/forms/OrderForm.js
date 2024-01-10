@@ -8,12 +8,10 @@ import { useAuth } from '../../utils/context/authContext';
 import { createOrder, updateOrder } from '../../api/orderData';
 
 const initialState = {
-  user_id: '',
   name: '',
-  publication_date: '',
   customer_phone: '',
   customer_email: '',
-  order_type: '',
+  type: '',
 };
 
 function OrderForm({ obj }) {
@@ -21,8 +19,6 @@ function OrderForm({ obj }) {
   const router = useRouter();
 
   const { user } = useAuth();
-
-  console.warn(user);
 
   useEffect(() => {
     if (obj.id) setFormInput(obj);
@@ -38,10 +34,11 @@ function OrderForm({ obj }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const payload = { ...formInput, user_id: user.uid };
+    const payload = { ...formInput, uid: user.uid };
     if (obj.id) {
       updateOrder(payload).then(() => router.push(`/orders/${obj.id}`));
     } else {
+      console.warn(payload);
       createOrder(payload).then(router.push('/'));
     }
   };
@@ -85,12 +82,13 @@ function OrderForm({ obj }) {
         <Form.Select
           placeholder="Order Type"
           onChange={handleChange}
-          name="order_type"
-          value={formInput.order_type}
+          name="type"
+          value={formInput.type}
         >
+          <option>Choose Type</option>
           <option
             key="1"
-            value="In House"
+            value="Inside"
           >
             In House
           </option>
