@@ -23,6 +23,9 @@ export default function OrderCard({ orderObj }) {
         <Link href={`/orders/${orderObj.id}`} passHref>
           <Button variant="primary" className="viewBtn">View</Button>
         </Link>
+        <Link href={`/orders/edit/${orderObj.id}`} passHref>
+          <Button variant="secondary" className="viewBtn">Edit</Button>
+        </Link>
         <Button variant="danger" onClick={deleteThisOrder}>Delete</Button>
       </Card.Body>
     </Card>
