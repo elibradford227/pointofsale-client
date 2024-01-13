@@ -23,9 +23,9 @@ export default function OrderDetails() {
         <h2>Status: {orderDetails.status}</h2>
         <h2>Order Type: {orderDetails.type}</h2>
       </div>
-      <div>
+      <div className="d-flex flex-wrap">
         {orderDetails.length === 0 ? '' : orderDetails.items.map((item) => (
-          <OrderItemCard key={item.id} itemObj={item} />
+          <OrderItemCard key={item.id} itemObj={item} order={orderDetails} />
         ))}
       </div>
     </div>

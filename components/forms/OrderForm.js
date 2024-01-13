@@ -39,7 +39,7 @@ function OrderForm({ obj }) {
       updateOrder(payload).then(() => router.push(`/orders/${obj.id}`));
     } else {
       console.warn(payload);
-      createOrder(payload).then(router.push('/'));
+      createOrder(payload).then(router.push('/orders'));
     }
   };
 
