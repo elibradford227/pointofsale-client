@@ -39,7 +39,7 @@ function OrderForm({ obj }) {
       updateOrder(payload).then(() => router.push(`/orders/${obj.id}`));
     } else {
       console.warn(payload);
-      createOrder(payload).then(router.push('/'));
+      createOrder(payload).then(router.push('/orders'));
     }
   };
 
@@ -52,7 +52,7 @@ function OrderForm({ obj }) {
           type="text"
           placeholder="Enter a name"
           name="name"
-          value={formInput.title}
+          value={formInput.name}
           onChange={handleChange}
           required
         />
