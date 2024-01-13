@@ -52,7 +52,7 @@ function OrderForm({ obj }) {
           type="text"
           placeholder="Enter a name"
           name="name"
-          value={formInput.title}
+          value={formInput.name}
           onChange={handleChange}
           required
         />
