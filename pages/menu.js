@@ -15,7 +15,6 @@ export default function Menu() {
   return (
     <div>
       <div className="d-flex flex-wrap">
-        one day im gonna snap bro
         {items.map((item) => (
           <MenuItemCard key={item.id} itemObj={item} />
         ))}
