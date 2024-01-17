@@ -76,10 +76,24 @@ const createItem = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const createOrderItem = (payload) => new Promise((resolve, reject) => {
+  fetch('http://localhost:8000/orderitems', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
 export {
   getItems,
   createItem,
   getSingleItem,
   deleteItem,
   updateItem,
+  createOrderItem,
 };
