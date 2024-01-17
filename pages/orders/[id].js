@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { Button } from 'react-bootstrap';
 import { getSingleOrder } from '../../api/orderData';
 import OrderItemCard from '../../components/OrderItemCard';
 
@@ -28,6 +30,12 @@ export default function OrderDetails() {
           <OrderItemCard key={item.id} itemObj={item} order={orderDetails} />
         ))}
       </div>
+      <Link href={`/items/${orderDetails.id}`} passHref>
+        <Button className="primary">Add Item</Button>
+      </Link>
+      <Link href={`/orders/close/${orderDetails.id}`} passHref>
+        <Button className="primary">Close Order</Button>
+      </Link>
     </div>
   );
 }

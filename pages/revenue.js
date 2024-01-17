@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import { getRevenues } from '../api/revenueData';
 
+// Initialize a map to store the returned revenue data from the backend on the DOM
+
 const map = {
   total: 0,
   tips: 0,
@@ -21,6 +23,8 @@ export default function RevenuePage() {
   useEffect(() => {
     getTheRevenue();
   }, []);
+
+  // Populate map based off revenue array
 
   useEffect(() => {
     revenue.forEach((res) => {
