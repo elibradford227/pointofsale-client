@@ -45,7 +45,7 @@ export default function RevenuePage() {
   return (
     <div>
       <div>
-        <h1>Total Revenue: {details.total}</h1>
+        <h1>Total Revenue: {details.total.toFixed(2)}</h1>
         <p>Tips: {details.tips}</p>
         <p>Phone Orders: {details.phoneOrders}</p>
         <p>In House Orders: {details.inHouseOrders}</p>

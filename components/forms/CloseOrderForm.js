@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
-// import { useAuth } from '../../utils/context/authContext';
+import { deleteOrder } from '../../api/orderData';
+import { createRevenue } from '../../api/revenueData';
 
 const initialState = {
   payment_type: '',
@@ -32,7 +33,8 @@ function CloseOrderForm({ obj }) {
       payload.total += Number(item.price);
     });
     payload.total += Number(payload.tip);
-    console.warn(payload);
+    createRevenue(payload);
+    deleteOrder(obj.id);
   };
 
   return (
