@@ -4,6 +4,12 @@ import MenuItemCard from '../../components/MenuItemCard';
 
 export default function SelectItems() {
   const [items, setItems] = useState([]);
+  const [selectedItems, setSelectedItems] = useState([]);
+
+  const handleClick = (item) => {
+    console.warn(item);
+    setSelectedItems((prevArr) => [...prevArr, item]);
+  };
 
   const getAllitems = () => {
     getItems().then((res) => setItems(res));
@@ -12,11 +18,15 @@ export default function SelectItems() {
   useEffect(() => {
     getAllitems();
   }, []);
+
+  console.warn(handleClick);
+
+  console.warn(selectedItems);
   return (
     <div>
       <div className="d-flex flex-wrap">
         {items.map((item) => (
-          <MenuItemCard key={item.id} itemObj={item} />
+          <MenuItemCard key={item.id} itemObj={item} handleClick={handleClick} />
         ))}
       </div>
     </div>
