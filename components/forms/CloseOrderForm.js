@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 // import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
@@ -8,25 +8,12 @@ import { Button } from 'react-bootstrap';
 
 const initialState = {
   payment_type: '',
-  tip: '',
+  tip: 0,
+  total: 0,
 };
 
 function CloseOrderForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
-  // const router = useRouter();
-
-  // const { user } = useAuth();
-
-  console.warn(obj);
-  console.warn(initialState);
-
-  useEffect(() => {
-    if (obj) {
-      initialState.total = obj.total + initialState.tip;
-      initialState.order_type = obj.type;
-      initialState.order = obj.id;
-    }
-  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -36,34 +23,41 @@ function CloseOrderForm({ obj }) {
     }));
   };
 
+  console.warn(obj);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // const payload = { ...formInput, uid: user.uid };
+    const payload = { ...formInput, order_type: obj.type, order: obj.id };
+    obj.items.forEach((item) => {
+      payload.total += Number(item.price);
+    });
+    payload.total += Number(payload.tip);
+    console.warn(payload);
   };
 
   return (
     <Form onSubmit={handleSubmit}>
       <h2 className="text-white mt-5">Close Order</h2>
 
-      <FloatingLabel label="Select Order Type">
+      <FloatingLabel label="Select Payment">
         <Form.Select
-          placeholder="Order Type"
+          placeholder="Payment Type"
           onChange={handleChange}
-          name="type"
+          name="payment_type"
           value={formInput.type}
         >
           <option>Choose Type</option>
           <option
             key="1"
-            value="Inside"
+            value="Cash"
           >
-            In House
+            Cash
           </option>
           <option
             key="2"
-            value="Phone"
+            value="Card"
           >
-            Phone
+            Card
           </option>
         </Form.Select>
       </FloatingLabel>
@@ -92,17 +86,23 @@ CloseOrderForm.propTypes = {
     tip: PropTypes.number,
     total: PropTypes.number,
     type: PropTypes.string,
+    items: PropTypes.shape({
+      id: PropTypes.string,
+      price: PropTypes.number,
+      name: PropTypes.string,
+      forEach: PropTypes.func,
+    }),
   }),
 };
 
 CloseOrderForm.defaultProps = {
-  id: initialState,
+  id: 0,
   obj: PropTypes.shape({
-    id: PropTypes.number,
-    payment_type: PropTypes.string,
-    tip: PropTypes.number,
-    total: PropTypes.number,
-    order_type: PropTypes.string,
+    id: 0,
+    payment_type: '',
+    tip: 0,
+    total: 0,
+    order_type: '',
   }),
 };
 

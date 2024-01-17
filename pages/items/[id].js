@@ -12,8 +12,6 @@ export default function SelectItems() {
 
   const { id } = router.query;
 
-  console.warn(id);
-
   const handleClick = (item) => {
     console.warn(item);
     setSelectedItems((prevArr) => [...prevArr, item]);
@@ -31,7 +29,7 @@ export default function SelectItems() {
         const payload = { order: id, item: item.id };
         createOrderItem(payload);
       });
-      router.push(`pages/orders/${id}`);
+      router.push(`/orders/${id}`);
     }
   };
 
