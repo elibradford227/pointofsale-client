@@ -1,5 +1,5 @@
-const getItems = () => new Promise((resolve, reject) => {
-  fetch('http://localhost:8000/items', {
+const getRevenues = () => new Promise((resolve, reject) => {
+  fetch('http://localhost:8000/revenues', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -16,8 +16,8 @@ const getItems = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const getSingleItem = (item) => new Promise((resolve, reject) => {
-  fetch(`http://localhost:8000/items/${item}`, {
+const getSingleRevenue = (revenue) => new Promise((resolve, reject) => {
+  fetch(`http://localhost:8000/revenues/${revenue}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -28,8 +28,8 @@ const getSingleItem = (item) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const updateItem = (payload) => new Promise((resolve, reject) => {
-  fetch(`http://localhost:8000/items/${payload.id}`, {
+const updateRevenue = (payload) => new Promise((resolve, reject) => {
+  fetch(`http://localhost:8000/revenues/${payload.id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -46,8 +46,8 @@ const updateItem = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const deleteItem = (item) => new Promise((resolve, reject) => {
-  fetch(`http://localhost:8000/items/${item}`, {
+const deleteRevenue = (revenue) => new Promise((resolve, reject) => {
+  fetch(`http://localhost:8000/revenues/${revenue}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -63,21 +63,8 @@ const deleteItem = (item) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const createItem = (payload) => new Promise((resolve, reject) => {
-  fetch('http://localhost:8000/items', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(payload),
-  })
-    .then((response) => response.json())
-    .then((data) => resolve(data))
-    .catch(reject);
-});
-
-const createOrderItem = (payload) => new Promise((resolve, reject) => {
-  fetch('http://localhost:8000/orderitems', {
+const createRevenue = (payload) => new Promise((resolve, reject) => {
+  fetch('http://localhost:8000/revenues', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -90,10 +77,9 @@ const createOrderItem = (payload) => new Promise((resolve, reject) => {
 });
 
 export {
-  getItems,
-  createItem,
-  getSingleItem,
-  deleteItem,
-  updateItem,
-  createOrderItem,
+  getRevenues,
+  createRevenue,
+  getSingleRevenue,
+  deleteRevenue,
+  updateRevenue,
 };
