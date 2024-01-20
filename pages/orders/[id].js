@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -17,7 +18,7 @@ export default function OrderDetails() {
     getSingleOrder(order).then((res) => setOrderDetails(res));
   }, [order]);
 
-  console.warn(total);
+  console.warn(orderDetails);
 
   useEffect(() => {
     let newTotal = total;
@@ -29,7 +30,7 @@ export default function OrderDetails() {
 
   return (
     <div>
-      <div className="detailsHeader">
+      <div className="details-header">
         <h1>{orderDetails.name}</h1>
         <h2>Customer Phone: {orderDetails.customer_phone}</h2>
         <h2>Customer Email: {orderDetails.customer_email}</h2>
@@ -43,10 +44,10 @@ export default function OrderDetails() {
         ))}
       </div>
       <Link href={`/items/${orderDetails.id}`} passHref>
-        <Button className="primary">Add Item</Button>
+        <Button className="page-button">Add Item</Button>
       </Link>
       <Link href={`/orders/close/${orderDetails.id}`} passHref>
-        <Button className="primary">Close Order</Button>
+        <Button className="page-button">Close Order</Button>
       </Link>
     </div>
   );

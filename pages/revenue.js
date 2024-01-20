@@ -40,17 +40,17 @@ export default function RevenuePage() {
 
   useEffect(() => {
     populateDetails();
-  }, [revenue, populateDetails]);
+  }, [revenue]);
 
   return (
     <div>
-      <div>
+      <div className="details-header">
         <h1>Total Revenue: {details.total.toFixed(2)}</h1>
-        <p>Tips: {details.tips}</p>
-        <p>Phone Orders: {details.phoneOrders}</p>
-        <p>In House Orders: {details.inHouseOrders}</p>
-        <p>Cash Orders: {details.cash}</p>
-        <p>Card Orders: {details.card}</p>
+        <h2>Tips: {details.tips}</h2>
+        <h2>Phone Orders: {details.phoneOrders}</h2>
+        <h2>In House Orders: {details.inHouseOrders}</h2>
+        <h2>Cash Orders: {details.cash}</h2>
+        <h2>Card Orders: {details.card}</h2>
       </div>
     </div>
   );
