@@ -5,18 +5,11 @@ import Button from 'react-bootstrap/Button';
 import { deleteOrderItem } from '../api/orderData';
 
 export default function OrderItemCard({ itemObj, order, setChange }) {
-  // const [deleted, setDeleted] = useState(false);
-  // Deletes associated item by passing the backend the orderid, and the items id itself. The backend filters the join table with these two values
   const deleteThisItem = () => {
     const payload = { order_item: itemObj.id };
     deleteOrderItem(order.id, payload);
-    // setDeleted(true);
     setChange((prevState) => !prevState);
   };
-
-  // if (deleted) {
-  //   return null;
-  // }
 
   return (
     <Card style={{ width: '17rem', marginRight: '20px', height: '10rem' }}>
