@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
@@ -24,8 +23,6 @@ function CloseOrderForm({ obj }) {
     }));
   };
 
-  console.warn(obj);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const payload = { ...formInput, order_type: obj.type, order: obj.id };
@@ -46,7 +43,7 @@ function CloseOrderForm({ obj }) {
           placeholder="Payment Type"
           onChange={handleChange}
           name="payment_type"
-          value={formInput.type}
+          value={formInput.payment_type}
         >
           <option>Choose Type</option>
           <option
@@ -81,7 +78,7 @@ function CloseOrderForm({ obj }) {
 }
 
 CloseOrderForm.propTypes = {
-  id: initialState,
+  id: PropTypes.number,
   obj: PropTypes.shape({
     id: PropTypes.number,
     payment_type: PropTypes.string,

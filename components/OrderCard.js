@@ -16,20 +16,22 @@ export default function OrderCard({ orderObj }) {
   };
 
   return (
-    <Card style={{ width: '17rem', marginRight: '20px', height: '20rem' }} className="carCard">
+    <Card style={{ width: '20rem', marginLeft: '1.25em' }} className="OrderCard">
       <Card.Body>
         <Card.Title>{orderObj.name}</Card.Title>
+        <hr />
         <p>Status: {orderObj.status}</p>
         <p>Customer Phone Number: {orderObj.customer_phone}</p>
         <p>Customer Email: {orderObj.customer_email}</p>
         <p>Order Type: {orderObj.type}</p>
+        <hr />
         <Link href={`/orders/${orderObj.id}`} passHref>
-          <Button variant="primary" className="viewBtn">View</Button>
+          <Button variant="primary" className="order-item-button">View</Button>
         </Link>
         <Link href={`/orders/edit/${orderObj.id}`} passHref>
-          <Button variant="secondary" className="viewBtn">Edit</Button>
+          <Button variant="secondary" className="order-item-button">Edit</Button>
         </Link>
-        <Button variant="danger" onClick={deleteThisOrder}>Delete</Button>
+        <Button variant="danger" className="order-item-button" onClick={deleteThisOrder}>Delete</Button>
       </Card.Body>
     </Card>
   );

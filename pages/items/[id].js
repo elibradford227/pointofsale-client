@@ -46,7 +46,7 @@ export default function SelectItems() {
           <MenuItemCard key={item.id} itemObj={item} />
         ))}
       </div>
-      <Button variant="primary" className="addBtn" onClick={addItems}>Add Selected Parts</Button>
+      <Button variant="primary" className="addBtn" onClick={addItems}>Add Selected Items</Button>
       <h1>Menu Items</h1>
       <div className="d-flex flex-wrap">
         {items.map((item) => (

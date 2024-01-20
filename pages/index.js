@@ -9,23 +9,25 @@ function Home() {
       className="text-center d-flex flex-column justify-content-center align-content-center"
       style={{
         height: '90vh',
-        padding: '30px',
-        maxWidth: '400px',
+        padding: '0px',
+        maxWidth: '500px',
         margin: '0 auto',
       }}
     >
       {/* <h1>Welcome {user.displayName}! </h1> */}
+      <img src="logo.png" alt="logo" id="logo" />
+      <div className="circle-outline" />
       <Link passHref href="/orders">
-        <Button variant="secondary">View Orders</Button>
+        <Button variant="secondary" className="homebutton">View Orders</Button>
       </Link>
       <Link passHref href="/menu">
-        <Button variant="secondary">Menu Items</Button>
+        <Button variant="secondary" className="homebutton">Menu Items</Button>
       </Link>
       <Link passHref href="/orders/new">
-        <Button variant="secondary">Create Order</Button>
+        <Button variant="secondary" className="homebutton">Create Order</Button>
       </Link>
       <Link passHref href="/revenue">
-        <Button variant="secondary">View Revenue</Button>
+        <Button variant="secondary" className="homebutton">View Revenue</Button>
       </Link>
     </div>
   );
