@@ -41,7 +41,6 @@ export default function SelectItems() {
     getAllitems();
   }, []);
 
-  console.warn(selectedItems);
   return (
     <div>
       <h1>Selected Items</h1>

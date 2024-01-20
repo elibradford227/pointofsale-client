@@ -5,10 +5,12 @@ import Button from 'react-bootstrap/Button';
 import { deleteOrderItem } from '../api/orderData';
 
 export default function OrderItemCard({ itemObj, order, setChange }) {
-  const deleteThisItem = () => {
-    const payload = { order_item: itemObj.id };
-    deleteOrderItem(order.id, payload);
-    setChange((prevState) => !prevState);
+  const deleteThisItem = async () => {
+    if (window.confirm('Delete item from order?')) {
+      const payload = { order_item: itemObj.id };
+      await deleteOrderItem(order.id, payload);
+      setChange((prevState) => !prevState);
+    }
   };
 
   return (
