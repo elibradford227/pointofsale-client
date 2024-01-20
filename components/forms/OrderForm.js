@@ -114,7 +114,7 @@ OrderForm.propTypes = {
     sale: PropTypes.bool,
     title: PropTypes.string,
     category_id: PropTypes.string,
-    id: PropTypes.string,
+    id: PropTypes.number,
   }),
 };
 

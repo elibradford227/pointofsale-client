@@ -7,12 +7,7 @@ import ViewDirectorBasedOnUserAuthStatus from '../utils/ViewDirector';
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      {/* <NoAuth
-        component={Component}
-        pageProps={pageProps}
-      /> */}
-
-      {/* TODO: Delete NoAuth component above and comment in code below for authentication */}
+      <title>Hip Hop Pizza N Wangz</title>
       <AuthProvider>
         <ViewDirectorBasedOnUserAuthStatus
           // if status is pending === loading

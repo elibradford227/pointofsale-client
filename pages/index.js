@@ -13,7 +13,6 @@ function Home() {
         margin: '0 auto',
       }}
     >
-      <title>HHPNW</title>
       <img src="logo.png" alt="logo" id="logo" />
       <div className="circle-outline" />
       <Link passHref href="/orders">
