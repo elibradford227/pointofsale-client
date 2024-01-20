@@ -11,10 +11,21 @@ export default function OrderDetails() {
   const order = router.query.id;
 
   const [orderDetails, setOrderDetails] = useState([]);
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
     getSingleOrder(order).then((res) => setOrderDetails(res));
   }, [order]);
+
+  console.warn(total);
+
+  useEffect(() => {
+    let newTotal = total;
+    orderDetails.items?.forEach((item) => {
+      newTotal += item.price;
+    });
+    setTotal(newTotal);
+  }, [orderDetails.items]);
 
   return (
     <div>
@@ -24,6 +35,7 @@ export default function OrderDetails() {
         <h2>Customer Email: {orderDetails.customer_email}</h2>
         <h2>Status: {orderDetails.status}</h2>
         <h2>Order Type: {orderDetails.type}</h2>
+        <h1>Total: {total.toFixed(2)} </h1>
       </div>
       <div className="d-flex flex-wrap">
         {orderDetails.length === 0 ? '' : orderDetails.items.map((item) => (

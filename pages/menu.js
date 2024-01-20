@@ -14,10 +14,14 @@ export default function Menu() {
   }, []);
   return (
     <div>
-      <div className="d-flex flex-wrap">
-        {items.map((item) => (
-          <MenuItemCard key={item.id} itemObj={item} />
-        ))}
+      <div className="orders">
+        <h1>Menu Items</h1>
+        <br />
+        <div className="d-flex flex-wrap">
+          {items.map((item) => (
+            <MenuItemCard key={item.id} itemObj={item} />
+          ))}
+        </div>
       </div>
     </div>
   );

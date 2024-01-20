@@ -14,10 +14,14 @@ export default function Orders() {
   }, []);
   return (
     <div>
-      <div className="d-flex flex-wrap">
-        {orders.map((order) => (
-          <OrderCard key={order.id} orderObj={order} />
-        ))}
+      <div className="orders">
+        <h1>Orders</h1>
+        <br />
+        <div className="d-flex flex-wrap">
+          {orders.map((order) => (
+            <OrderCard key={order.id} orderObj={order} />
+          ))}
+        </div>
       </div>
     </div>
   );

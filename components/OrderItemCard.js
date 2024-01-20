@@ -16,7 +16,7 @@ export default function OrderItemCard({ itemObj, order }) {
     }
   };
   return (
-    <Card style={{ width: '17rem', marginRight: '20px', height: '20rem' }} className="carCard">
+    <Card style={{ width: '17rem', marginRight: '20px', height: '10rem' }} className="carCard">
       <Card.Body>
         <Card.Title>{itemObj.name}</Card.Title>
         <p>Price: {itemObj.price}</p>

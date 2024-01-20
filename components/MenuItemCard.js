@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 
 export default function MenuItemCard({ itemObj, handleClick }) {
   return (
-    <Card style={{ width: '17rem', marginRight: '20px' }} className="carCard">
+    <Card style={{ width: '17rem', marginLeft: '1.5em', marginBottom: '1.5em' }} className="carCard">
       <Card.Body>
         <Card.Title>{itemObj.name}</Card.Title>
         <p>Price: {itemObj.price}</p>
