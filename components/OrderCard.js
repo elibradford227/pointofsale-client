@@ -3,15 +3,13 @@ import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { deleteOrder } from '../api/orderData';
 
-export default function OrderCard({ orderObj }) {
-  const { router } = useRouter();
-  const deleteThisOrder = () => {
+export default function OrderCard({ orderObj, setChange }) {
+  const deleteThisOrder = async () => {
     if (window.confirm('Delete order?')) {
-      deleteOrder(orderObj.id);
-      router.reload();
+      await deleteOrder(orderObj.id);
+      setChange((prevState) => !prevState);
     }
   };
 
@@ -47,4 +45,5 @@ OrderCard.propTypes = {
     customer_phone: PropTypes.string,
     customer_email: PropTypes.string,
   }).isRequired,
+  setChange: PropTypes.func.isRequired,
 };

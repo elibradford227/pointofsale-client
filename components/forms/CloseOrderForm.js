@@ -106,12 +106,12 @@ CloseOrderForm.propTypes = {
     tip: PropTypes.number,
     total: PropTypes.number,
     type: PropTypes.string,
-    items: PropTypes.shape({
-      id: PropTypes.string,
+    items: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.number,
       price: PropTypes.number,
       name: PropTypes.string,
       forEach: PropTypes.func,
-    }),
+    })),
   }),
 };
 
