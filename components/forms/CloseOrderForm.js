@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
+import { useRouter } from 'next/router';
 import { deleteOrder } from '../../api/orderData';
 import { createRevenue } from '../../api/revenueData';
 
@@ -14,6 +15,8 @@ const initialState = {
 
 function CloseOrderForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
+
+  const router = useRouter();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,7 +34,7 @@ function CloseOrderForm({ obj }) {
     });
     payload.total += Number(payload.tip);
     createRevenue(payload);
-    deleteOrder(obj.id);
+    deleteOrder(obj.id).then(() => router.push('/orders'));
   };
 
   return (
@@ -56,7 +59,25 @@ function CloseOrderForm({ obj }) {
             key="2"
             value="Card"
           >
-            Card
+            Credit
+          </option>
+          <option
+            key="3"
+            value="Debit"
+          >
+            Debit
+          </option>\
+          <option
+            key="4"
+            value="MobilePayment"
+          >
+            Mobile Payment
+          </option>
+          <option
+            key="5"
+            value="Check"
+          >
+            Check
           </option>
         </Form.Select>
       </FloatingLabel>

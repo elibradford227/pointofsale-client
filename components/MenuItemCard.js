@@ -24,5 +24,9 @@ MenuItemCard.propTypes = {
     name: PropTypes.string,
     price: PropTypes.number,
   }).isRequired,
-  handleClick: PropTypes.func.isRequired,
+  handleClick: PropTypes.func,
+};
+
+MenuItemCard.defaultProps = {
+  handleClick: null,
 };
