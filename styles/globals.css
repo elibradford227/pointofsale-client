@@ -50,6 +50,7 @@ body {
 
 .OrderCard {
   width: 400px;
+  margin-bottom: 20px;
 }
 
 .card-body {
@@ -66,4 +67,15 @@ body {
 
 h1 {
   font-size: 50px;
+  color: white;
+}
+
+.page-button {
+  width: 45%;
+  margin: 5px;
+  margin-top: 20px
+}
+
+.details-header {
+  color: white;
 }

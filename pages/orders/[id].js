@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -12,24 +13,23 @@ export default function OrderDetails() {
 
   const [orderDetails, setOrderDetails] = useState([]);
   const [total, setTotal] = useState(0);
+  const [change, setChange] = useState(false);
 
   useEffect(() => {
     getSingleOrder(order).then((res) => setOrderDetails(res));
-  }, [order]);
-
-  console.warn(total);
+  }, [order, change]);
 
   useEffect(() => {
-    let newTotal = total;
+    let newTotal = 0;
     orderDetails.items?.forEach((item) => {
       newTotal += item.price;
     });
     setTotal(newTotal);
-  }, [orderDetails.items]);
+  }, [orderDetails]);
 
   return (
     <div>
-      <div className="detailsHeader">
+      <div className="details-header">
         <h1>{orderDetails.name}</h1>
         <h2>Customer Phone: {orderDetails.customer_phone}</h2>
         <h2>Customer Email: {orderDetails.customer_email}</h2>
@@ -39,14 +39,14 @@ export default function OrderDetails() {
       </div>
       <div className="d-flex flex-wrap">
         {orderDetails.length === 0 ? '' : orderDetails.items.map((item) => (
-          <OrderItemCard key={item.id} itemObj={item} order={orderDetails} />
+          <OrderItemCard key={item.id} itemObj={item} order={orderDetails} setChange={setChange} />
         ))}
       </div>
       <Link href={`/items/${orderDetails.id}`} passHref>
-        <Button className="primary">Add Item</Button>
+        <Button className="page-button">Add Item</Button>
       </Link>
       <Link href={`/orders/close/${orderDetails.id}`} passHref>
-        <Button className="primary">Close Order</Button>
+        <Button className="page-button">Close Order</Button>
       </Link>
     </div>
   );

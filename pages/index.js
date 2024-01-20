@@ -1,7 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import { Button } from 'react-bootstrap';
 import Link from 'next/link';
-// import { signOut } from '../utils/auth'; // TODO: COMMENT IN FOR AUTH
-// import { useAuth } from '../utils/context/authContext'; // TODO: COMMENT IN FOR AUTH
 
 function Home() {
   return (
@@ -14,7 +13,7 @@ function Home() {
         margin: '0 auto',
       }}
     >
-      {/* <h1>Welcome {user.displayName}! </h1> */}
+      <title>HHPNW</title>
       <img src="logo.png" alt="logo" id="logo" />
       <div className="circle-outline" />
       <Link passHref href="/orders">

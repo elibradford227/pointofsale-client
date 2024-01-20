@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-bind */
 import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import { useRouter } from 'next/router';
@@ -13,7 +14,6 @@ export default function SelectItems() {
   const { id } = router.query;
 
   const handleClick = (item) => {
-    console.warn(item);
     setSelectedItems((prevArr) => [...prevArr, item]);
   };
 
@@ -21,17 +21,21 @@ export default function SelectItems() {
     getItems().then((res) => setItems(res));
   };
 
-  const addItems = () => {
+  async function routeChange() {
+    router.push(`/orders/${id}`);
+  }
+
+  async function addItems() {
     if (selectedItems.length === 0) {
       alert('Please select items from menu');
     } else {
-      selectedItems.forEach((item) => {
+      await Promise.all(selectedItems.map(async (item) => {
         const payload = { order: id, item: item.id };
-        createOrderItem(payload);
-      });
-      router.push(`/orders/${id}`);
+        await createOrderItem(payload);
+      }));
+      await routeChange();
     }
-  };
+  }
 
   useEffect(() => {
     getAllitems();

@@ -2,21 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import { useRouter } from 'next/router';
 import { deleteOrderItem } from '../api/orderData';
 
-export default function OrderItemCard({ itemObj, order }) {
-  const router = useRouter();
-  // Deletes associated item by passing the backend the orderid, and the items id itself. The backend filters the join table with these two values
+export default function OrderItemCard({ itemObj, order, setChange }) {
   const deleteThisItem = () => {
-    if (window.confirm('Delete item?')) {
-      const payload = { order_item: itemObj.id };
-      deleteOrderItem(order.id, payload);
-      router.reload();
-    }
+    const payload = { order_item: itemObj.id };
+    deleteOrderItem(order.id, payload);
+    setChange((prevState) => !prevState);
   };
+
   return (
-    <Card style={{ width: '17rem', marginRight: '20px', height: '10rem' }} className="carCard">
+    <Card style={{ width: '17rem', marginRight: '20px', height: '10rem' }}>
       <Card.Body>
         <Card.Title>{itemObj.name}</Card.Title>
         <p>Price: {itemObj.price}</p>
@@ -34,4 +30,5 @@ OrderItemCard.propTypes = {
     name: PropTypes.string,
     price: PropTypes.number,
   }).isRequired,
+  setChange: PropTypes.func.isRequired,
 };
